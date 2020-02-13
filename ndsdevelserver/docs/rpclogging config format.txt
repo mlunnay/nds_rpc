@@ -1,0 +1,44 @@
+logging: {
+    default: {
+        logger: {
+            path: str,
+            level: int,
+            type: int,
+            params: {...}
+        }
+        formatter: {
+            format: str,
+            (dateformat: str)
+        }
+    }
+    logs: {
+        <logname>: {
+            logger: {
+                path: str,
+                level: int,
+                type: int,
+                params: {...}
+            }
+            formatter: {
+                format: str,
+                (dateformat: str)
+            }
+        }
+    }
+}
+
+logger.type { FileHandler: 0, RotatingFileHandler: 1 }
+
+FileHandler params
+{
+    filename: str,
+    mode: str
+}
+
+RotatingFileHandler params
+{
+    filename: str,
+    mode: str,
+    maxbytes: int,
+    buckupcount: int,
+}

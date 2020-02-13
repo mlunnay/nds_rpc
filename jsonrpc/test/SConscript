@@ -1,0 +1,11 @@
+src_files = Split('test.cpp #src/value.cpp #src/except.cpp')
+import os
+env = Environment(ENV=os.environ,
+    tools=['mingw'],
+    LIBS = ['wsock32'],
+    CCFLAGS = ['-Wall'])
+env.Program('testvalue', ['testvalue.cpp', '#src/value.cpp', '#src/except.cpp'])
+env.Program('testmethodcall', ['testmethodcall.cpp', '#src/methodcall.cpp', '#src/value.cpp', '#src/except.cpp'])
+env.Program('testparse', ['testparse.cpp', '#src/parse.cpp', '#src/value.cpp', '#src/except.cpp'])
+env.Program('testtcpip', ['testtcpip.cpp', '#src/tcpipconnection.cpp', '#src/except.cpp'])
+env.Program('testrequester', ['testrequester.cpp', '#src/requester.cpp', '#src/tcpipconnection.cpp', '#src/except.cpp', '#src/methodcall.cpp', '#src/response.cpp', '#src/parse.cpp', '#src/value.cpp'])
